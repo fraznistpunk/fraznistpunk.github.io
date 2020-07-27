@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&display=swap');
+        body {
+            transition: .2s ease-out;
+            font-family: 'Open Sans', sans-serif;
+        }
+        body.dark {
+            filter:invert(1);
+            transition: .2s ease-in;
+            background-color:#191919
+        }
+        body.dark img {
+            filter:invert(1);
+        }
+        a {
+            color: #000 !important;
+            text-decoration: none !important; 
+        }
+        .flex {
+            display: flex !important;
+        }
+        .color-div {
+            border: 2px solid #d2d2d2;
+            cursor: pointer;
+            border-radius: 6px;
+            font-size: 1.1em;
+            padding: 20px;
+            /*background-image: url("http://placeskull.com/20/300/6610f2");*/
+            margin: 1rem auto;
+        }
+        .color-div:hover {
+            background-color: #0000001a;
+        }
+        .postTime {
+            font-family: monospace !important;
+        }
+        .postTitle {
+            font-size: 1.6rem;
+        }
+        @media screen and (max-width: 375px) { /* Devices less than or equal to 365px */
+            .color-div {
+                padding: 12px;
+                text-align: left;
+            }
+            .postTitle {
+                font-size: .9rem !important;
+            }
+            .postTime {
+                font-size: .75rem;
+            }
+        }
+        .alert-danger {
+                color: #ffffff;
+                background-color: #f5293b;
+                border-color: #f5c6cb;
+        }
