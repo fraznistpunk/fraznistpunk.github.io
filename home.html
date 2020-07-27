@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="theme-color" content="#db5945">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Home</title>
+	<!-- Styles -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="includes/styles/main.css">
+</head>
+<body>
+		
+	<div class="container mt-2 center">
+		<div class="col-sm-12 flex">
+			<div class="col-sm-10 center">
+				
+				<h4>Jatin K</h4>
+				<span><small class="dark-mode"><img class="img-responsive darkToggle" height="30" src="switch.svg" alt="Toggle" title="Toggle Darkside"></small></span>
+			</div>
+
+			<div class="col-sm-2 text-right">
+
+				<h5><span class="strong"><a href="#">Blog</a></span></h5>
+
+			</div>
+		</div>
+<!-- Posts -->
+		<section class="blogBody container">
+
+			<div class="col-sm-12 mt-5">
+				<h5 class="text-strong">Recent Blog Posts :</h5>
+				<div class="postContainer"></div>
+			</div>
+
+		</section>
+	</div>
+<!-- Footer -->
+		<div class="footer container">
+
+			<div class="col-sm-12 text-center">
+				<span style="font-size: 1rem;" class="mr-2"> <a href="#">Blog</a> </span>
+				<span style="font-size: 1rem;" class="ml-2"> <a href="#">Home</a> </span>
+			</div>
+			<div class="col-sm-12 text-center mb-3">
+				<span style="font-size: 1.2em;"> v1.0, All Rights Reserved, <small><strong>#sηθЯ1Λχ</strong></small></span>
+			</div>
+
+		</div>
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<script>
+	// Remove watermark (JS way)
+	$('div:has(img[alt="www.000webhost.com"])').hide();
+	const darkSide =$('.dark-mode');
+	darkSide.on("click",function() {
+		// alert("Test Click");
+		$("body").toggleClass("dark");
+	});
+	function GetPost() {
+		$.ajax({
+    		url: "getPosts.php",
+    		type: "post",
+    		data: {fetch:true},
+			success: function(data) {
+				if(data != "") {
+					$(".postContainer").html(data);
+				} else {
+					$(".postContainer").html("<div class='text-center col-sm-6' style='margin: 0px auto;'><div class='alert alert-danger alert-dismissible fade show' role='alert' style='text-align: left !important'><i class='fa fa-exclamation-triangle' aria-hidden='true'></i>&nbsp;Nothing to see here<button type='button' class='close' data-dismiss='alert' aria-label='Close'><span aria-hidden='true'>&times;</span></button></div></div>");
+				}
+    		}
+   		 });
+	}
+	GetPost();
+
+	setInterval("GetPost()", 4000);
+</script>
+
+</html>
